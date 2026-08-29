@@ -1,39 +1,84 @@
-# RIHLA - Tourist Places App
+# 📱 RIHLA - Tourist Places App
 
-RIHLA is a Flutter app that helps users discover remarkable tourist destinations
-across Saudi Arabia. It presents each place with an image, location, rating, and
-short description, then opens a details screen for a richer view.
+> A Flutter travel guide for discovering remarkable destinations across Saudi
+> Arabia.
 
-## Features
+<p align="center">
+  <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
+  <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
+  <img src="https://img.shields.io/badge/Platform-iOS%20%7C%20Android-lightgrey?style=for-the-badge" alt="Platform">
+</p>
 
-- Four Saudi destinations stored in a `List<Map<String, dynamic>>`
-- Responsive destination cards using `MediaQuery.`
-- Local image assets that work without an internet connection
-- Details screen with description, best visiting time, and ideal visit duration
-- Navigation between screens using `Navigator.`
-- Bookmark places and view them in the Saved tab
+---
 
-## Screenshots
+## 📖 Overview
 
-### Home screen
-<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 46 52" src="https://github.com/user-attachments/assets/69adc76a-11d3-485c-a28a-1b1e55610ec8" />
+RIHLA presents four memorable Saudi destinations: Hegra, the Edge of the
+World, Al-Balad, and Rijal Almaa. Each destination has a local image, location,
+rating, and short story. Users can explore a richer details screen and bookmark
+places for a future trip.
 
+## ✨ Features
 
-### Destination details
+- 🗺️ Four destinations stored in a `List<Map<String, dynamic>>`
+- 🖼️ Local image assets that work without an internet connection
+- 📱 Responsive image sizing with `MediaQuery`
+- 🔎 Destination details with story, best visiting time, and ideal duration
+- ➡️ Navigation between screens with `Navigator`
+- 🔖 Bookmark places and view them in the Saved tab
 
-<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 47 01" src="https://github.com/user-attachments/assets/ac0337f5-83e9-46f7-b6c2-20a0d7e56d28" />
+## 📸 Screenshots
 
-### Saved Details Page
+<p align="center">
+  <img src="screenshots/home.png" alt="RIHLA home screen" width="260">
+  <img src="screenshots/details.png" alt="Hegra details screen" width="260">
+  <img src="https://github.com/user-attachments/assets/fa539922-b3f8-4651-a6f8-83ad03f1898a" alt="RIHLA saved places screen" width="260">
+</p>
 
-<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 47 12" src="https://github.com/user-attachments/assets/fa539922-b3f8-4651-a6f8-83ad03f1898a" />
+<p align="center"><em>Discover, destination details, and Saved screens</em></p>
 
-
-## Widgets Used
+## 🧩 Widgets Used
 
 `AppBar`, `Column`, `ListView`, `Container`, `SizedBox`, `Image`, `Text`,
 `MediaQuery`, `Navigator`, `FilledButton`, and `NavigationBar`.
 
-## Run the Project
+## 🚀 Getting Started
 
-1. Run `flutter pub get`.
-2. Run `flutter run`.
+### Prerequisites
+
+- Flutter SDK installed and configured
+- An iOS simulator, Android emulator, or physical device
+
+### Run the project
+
+```bash
+flutter pub get
+flutter run
+```
+
+## 🗂️ Project Structure
+
+```text
+turki_mohammed_project1/
+├── assets/
+│   └── images/             # Local destination photos
+├── lib/
+│   ├── main.dart           # App theme and entry point
+│   └── screens/
+│       ├── home.dart       # Destination cards and Saved tab
+│       └── place_details.dart
+├── screenshots/            # README screenshots
+├── pubspec.yaml            # Dependencies and asset registration
+└── README.md
+```
+
+## 🧠 What I Practiced
+
+- Building responsive Flutter layouts with core widgets
+- Organizing reusable destination data
+- Passing data between screens
+- Managing simple saved-place state
+
+---
+
+<p align="center">Made by Turki Mohammed for Flutter Bootcamp Project 1.</p>
