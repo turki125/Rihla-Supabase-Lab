@@ -1,3 +1,2 @@
-# turki_mohammed_project1
+# RIHLA
 
-A new Flutter project.
