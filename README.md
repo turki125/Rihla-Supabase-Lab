@@ -16,14 +16,17 @@ short description, then opens a details screen for a richer view.
 ## Screenshots
 
 ### Home screen
+<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 46 52" src="https://github.com/user-attachments/assets/69adc76a-11d3-485c-a28a-1b1e55610ec8" />
 
-![RIHLA home screen](<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 46 52" src="https://github.com/user-attachments/assets/975ebe24-10c5-429d-ac56-e9f80a5fb5c9" />
-)
 
 ### Destination details
 
-![Hegra details screen](<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 47 01" src="https://github.com/user-attachments/assets/7cc4b566-88c7-4992-9a4a-3eb339902565" />
-)
+<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 47 01" src="https://github.com/user-attachments/assets/ac0337f5-83e9-46f7-b6c2-20a0d7e56d28" />
+
+### Saved Details Page
+
+<img width="300" alt="Simulator Screenshot - iPhone 16 Pro Max - 2026-08-29 at 23 47 12" src="https://github.com/user-attachments/assets/fa539922-b3f8-4651-a6f8-83ad03f1898a" />
+
 
 ## Widgets Used
 
