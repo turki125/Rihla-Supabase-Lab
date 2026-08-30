@@ -34,7 +34,6 @@ places for a future trip.
   <img src="screenshots/home.png" alt="RIHLA Discover screen" width="260">
   <img src="screenshots/details.png" alt="RIHLA place details screen" width="260">
   <img src="screenshots/saved.png" alt="RIHLA saved journeys screen" width="260">
-  <img src="https://github.com/user-attachments/assets/fa539922-b3f8-4651-a6f8-83ad03f1898a" alt="RIHLA saved places screen" width="260">
 </p>
 
 <p align="center"><em>Discover, destination details, and Saved screens</em></p>
