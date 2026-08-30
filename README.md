@@ -1,4 +1,4 @@
-# 📱 RIHLA - Tourist Places App
+# 📱 RIHLA - Discover Saudia App
 
 > A Flutter travel guide for discovering remarkable destinations across Saudi
 > Arabia.
