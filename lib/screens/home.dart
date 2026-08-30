@@ -313,6 +313,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                             builder: (context) =>
                                                 PlaceDetailsScreen(
                                                   place: place,
+                                                  onSave: () {
+                                                    setState(() {
+                                                      saved.add(place['name']);
+                                                    });
+                                                  },
                                                 ),
                                           ),
                                         );

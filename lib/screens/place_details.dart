@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 
 // This screen receives one destination map from the home screen.
 class PlaceDetailsScreen extends StatelessWidget {
-  const PlaceDetailsScreen({super.key, required this.place});
+  const PlaceDetailsScreen({
+    super.key,
+    required this.place,
+    required this.onSave,
+  });
 
   // Stores the selected destination data.
   // Example: Hegra map, including its name, image, and description.
   final Map<String, dynamic> place;
+  final VoidCallback onSave;
 
   @override
   Widget build(BuildContext context) {
@@ -151,6 +156,7 @@ class PlaceDetailsScreen extends StatelessWidget {
             width: double.infinity,
             child: FilledButton.icon(
               onPressed: () {
+                onSave();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('${place['name']} added to your dream trip!'),
