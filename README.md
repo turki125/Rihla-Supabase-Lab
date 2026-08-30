@@ -31,7 +31,7 @@ places for a future trip.
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="screenshots/home.png" alt="RIHLA home screen" width="260">
+  <img src="https://raw.githubusercontent.com/turki125/Rihla/7a5c0b5/screenshots/home.png" alt="RIHLA home screen" width="260">
   <img src="screenshots/details.png" alt="Hegra details screen" width="260">
   <img src="https://github.com/user-attachments/assets/fa539922-b3f8-4651-a6f8-83ad03f1898a" alt="RIHLA saved places screen" width="260">
 </p>
