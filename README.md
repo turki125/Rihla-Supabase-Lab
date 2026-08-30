@@ -28,6 +28,28 @@ places for a future trip.
 - ➡️ Navigation between screens with `Navigator`
 - 🔖 Bookmark places and view them in the Saved tab
 
+## 🎨 Design System
+
+RIHLA uses a **Cedar & Sage** palette inspired by Saudi landscapes. The warm
+earth tones give the app a calm, modern travel-guide feel.
+
+| Color | Hex | Used for |
+|---|---|---|
+| Deep Cedar | `#3D2A20` | Buttons and the details screen AppBar |
+| Soft Beige | `#E8DDD0` | Main app background |
+| Sage Green | `#6E8062` | Navigation accents and destination tags |
+| Warm Surface | `#FFF9F3` | Cards and the search field |
+| Terracotta | `#B9653C` | Rating stars |
+
+### App flow
+
+**Discover places → Search or explore a card → View destination details → Add it to a dream trip → View it in Saved.**
+
+### Responsive design
+
+Destination images use `MediaQuery` to adapt their height to the device screen
+width, helping cards look balanced on different phone sizes.
+
 ## 📸 Screenshots
 
 <p align="center">
