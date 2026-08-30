@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// This screen receives one destination map from the home screen.
 class PlaceDetailsScreen extends StatelessWidget {
   const PlaceDetailsScreen({
     super.key,
@@ -8,21 +7,22 @@ class PlaceDetailsScreen extends StatelessWidget {
     required this.onSave,
   });
 
-  // Stores the selected destination data.
-  // Example: Hegra map, including its name, image, and description.
   final Map<String, dynamic> place;
   final VoidCallback onSave;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(place['name'])),
+      appBar: AppBar(
+        title: Text(place['name']),
+        backgroundColor: const Color(0xFF3D2A20),
+        foregroundColor: const Color(0xFFFFF9F3),
+      ),
 
       body: ListView(
         padding: const EdgeInsets.all(20),
 
         children: [
-          // Shows the destination image.
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
 
@@ -39,7 +39,6 @@ class PlaceDetailsScreen extends StatelessWidget {
 
           const SizedBox(height: 24),
 
-          // Shows the destination name.
           Text(
             place['name'],
             style: Theme.of(context).textTheme.headlineMedium,
@@ -47,7 +46,6 @@ class PlaceDetailsScreen extends StatelessWidget {
 
           const SizedBox(height: 8),
 
-          // Shows the destination location with an icon.
           Row(
             children: [
               const Icon(Icons.location_on_outlined),
@@ -65,7 +63,6 @@ class PlaceDetailsScreen extends StatelessWidget {
 
           const SizedBox(height: 10),
 
-          // Shows the description from the map.
           Text(
             place['description'],
             style: TextStyle(
@@ -83,8 +80,9 @@ class PlaceDetailsScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFFFCF7),
+                    color: const Color(0xFFFFF9F3),
                     borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: const Color(0xFFE0D0BF)),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,8 +116,9 @@ class PlaceDetailsScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: const Color(0xFFFFFCF7),
+                    color: const Color(0xFFFFF9F3),
                     borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: const Color(0xFFE0D0BF)),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,7 +150,6 @@ class PlaceDetailsScreen extends StatelessWidget {
 
           const SizedBox(height: 30),
 
-          // A creative button for the second screen.
           SizedBox(
             width: double.infinity,
             child: FilledButton.icon(

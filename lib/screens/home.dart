@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     hintText: 'Search a place or region',
                     prefixIcon: const Icon(
                       Icons.search_rounded,
-                      color: Color(0xFF48605B),
+                      color: Color(0xFF52634D),
                     ),
                     suffixIcon: query.isEmpty
                         ? null
@@ -129,19 +129,19 @@ class _HomeScreenState extends State<HomeScreen> {
                             icon: const Icon(Icons.close_rounded),
                           ),
                     filled: true,
-                    fillColor: const Color(0xFFFFFCF7),
+                    fillColor: const Color(0xFFFFF9F3),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(color: Color(0xFFE3D8CA)),
+                      borderSide: const BorderSide(color: Color(0xFFD8C8B6)),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
-                      borderSide: const BorderSide(color: Color(0xFFE3D8CA)),
+                      borderSide: const BorderSide(color: Color(0xFFD8C8B6)),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                       borderSide: const BorderSide(
-                        color: Color(0xFFC97832),
+                        color: Color(0xFFB9653C),
                         width: 2,
                       ),
                     ),
@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         width: double.infinity,
                         padding: const EdgeInsets.all(32),
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFFFCF7),
+                          color: const Color(0xFFFFF9F3),
                           borderRadius: BorderRadius.circular(24),
                         ),
                         child: Column(
@@ -170,7 +170,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? Icons.bookmark_add_outlined
                                   : Icons.search_off_rounded,
                               size: 48,
-                              color: Color(0xFF183B36),
+                              color: Color(0xFF3D2A20),
                             ),
                             SizedBox(height: 16),
                             Text(
@@ -205,13 +205,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin: const EdgeInsets.only(bottom: 20),
                         clipBehavior: Clip.antiAlias,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFFFFCF7),
+                          color: const Color(0xFFFFF9F3),
                           borderRadius: BorderRadius.circular(24),
                           boxShadow: const [
                             BoxShadow(
-                              color: Color(0x14000000),
-                              blurRadius: 18,
-                              offset: Offset(0, 8),
+                              color: Color(0x183D2A20),
+                              blurRadius: 22,
+                              offset: Offset(0, 10),
                             ),
                           ],
                         ),
@@ -237,7 +237,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           vertical: 6,
                                         ),
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFFE4ECE7),
+                                          color: const Color(0xFFDFE8DA),
                                           borderRadius: BorderRadius.circular(
                                             20,
                                           ),
@@ -276,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                                       const Icon(
                                         Icons.star_rounded,
-                                        color: Color(0xFFC97832),
+                                        color: Color(0xFFB9653C),
                                         size: 20,
                                       ),
                                       const SizedBox(width: 4),
