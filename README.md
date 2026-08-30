@@ -23,6 +23,7 @@ places for a future trip.
 - 🗺️ Four destinations stored in a `List<Map<String, dynamic>>`
 - 🖼️ Local image assets that work without an internet connection
 - 📱 Responsive image sizing with `MediaQuery`
+- 🔍 Search destinations by name or region with a `TextField`
 - 🔎 Destination details with story, best visiting time, and ideal duration
 - ➡️ Navigation between screens with `Navigator`
 - 🔖 Bookmark places and view them in the Saved tab
@@ -40,7 +41,7 @@ places for a future trip.
 ## 🧩 Widgets Used
 
 `AppBar`, `Column`, `ListView`, `Container`, `SizedBox`, `Image`, `Text`,
-`MediaQuery`, `Navigator`, `FilledButton`, and `NavigationBar`.
+`MediaQuery`, `Navigator`, `FilledButton`, `TextField`, and `NavigationBar`.
 
 ## 🚀 Getting Started
 

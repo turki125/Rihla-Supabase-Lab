@@ -55,17 +55,27 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // 0 means Discover tab. 1 means Saved tab.
   int selectedIndex = 0;
+  String query = '';
 
   // Stores the names of places the user bookmarks.
   final Set<String> saved = {};
+  final TextEditingController searchController = TextEditingController();
+
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final displayedPlaces = selectedIndex == 0
-        ? places
-        : places.where((place) {
-            return saved.contains(place['name']);
-          }).toList();
+    final displayedPlaces = places.where((place) {
+      final isInSelectedTab =
+          selectedIndex == 0 || saved.contains(place['name']);
+      final searchableText = '${place['name']} ${place['location']}'
+          .toLowerCase();
+      return isInSelectedTab && searchableText.contains(query.toLowerCase());
+    }).toList();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -98,6 +108,45 @@ class _HomeScreenState extends State<HomeScreen> {
                       : 'Keep the places that inspire your next trip.',
                   style: TextStyle(color: Colors.grey.shade700, fontSize: 16),
                 ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: searchController,
+                  onChanged: (value) => setState(() => query = value),
+                  decoration: InputDecoration(
+                    hintText: 'Search a place or region',
+                    prefixIcon: const Icon(
+                      Icons.search_rounded,
+                      color: Color(0xFF48605B),
+                    ),
+                    suffixIcon: query.isEmpty
+                        ? null
+                        : IconButton(
+                            tooltip: 'Clear search',
+                            onPressed: () {
+                              searchController.clear();
+                              setState(() => query = '');
+                            },
+                            icon: const Icon(Icons.close_rounded),
+                          ),
+                    filled: true,
+                    fillColor: const Color(0xFFFFFCF7),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(color: Color(0xFFE3D8CA)),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(color: Color(0xFFE3D8CA)),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: const BorderSide(
+                        color: Color(0xFFC97832),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -113,17 +162,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: const Color(0xFFFFFCF7),
                           borderRadius: BorderRadius.circular(24),
                         ),
-                        child: const Column(
+                        child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(
-                              Icons.bookmark_add_outlined,
+                              query.isEmpty
+                                  ? Icons.bookmark_add_outlined
+                                  : Icons.search_off_rounded,
                               size: 48,
                               color: Color(0xFF183B36),
                             ),
                             SizedBox(height: 16),
                             Text(
-                              'No saved places yet',
+                              query.isEmpty
+                                  ? 'No saved places yet'
+                                  : 'No places found',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w800,
@@ -131,7 +184,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              'Bookmark a destination from Discover to find it here.',
+                              query.isEmpty
+                                  ? 'Bookmark a destination from Discover to find it here.'
+                                  : 'Try a different destination name or region.',
                               textAlign: TextAlign.center,
                             ),
                           ],
