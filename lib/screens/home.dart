@@ -1,49 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../data/place_data.dart';
+import '../models/place_model.dart';
 import 'place_details.dart';
-
-List<Map<String, dynamic>> places = [
-  {
-    'name': 'Hegra',
-    'location': 'AlUla, Madinah Province',
-    'image': 'assets/images/hegra.jpg',
-    'description': 'Walk among monumental Nabataean tombs carved into sandstone at Saudi Arabia\'s first UNESCO World Heritage Site.',
-    'tag': 'Ancient wonder',
-    'rating': '4.9',
-    'bestTime': 'October - March',
-    'duration': 'Half day',
-  },
-  {
-    'name': 'Edge of the World',
-    'location': 'Tuwaiq Escarpment, Riyadh',
-    'image': 'assets/images/edge_of_the_world.jpg',
-    'description': 'Stand above an endless horizon where dramatic limestone cliffs fall away into the ancient ocean floor.',
-    'tag': 'Epic views',
-    'rating': '4.8',
-    'bestTime': 'November - February',
-    'duration': 'Full day',
-  },
-  {
-    'name': 'Al-Balad',
-    'location': 'Historic Jeddah, Makkah Province',
-    'image': 'assets/images/al_balad.webp',
-    'description': 'Discover traditional houses, wooden balconies, lively streets, and centuries of Red Sea history.',
-    'tag': 'Living heritage',
-    'rating': '4.7',
-    'bestTime': 'November - March',
-    'duration': '3-4 hours',
-  },
-  {
-    'name': 'Rijal Almaa',
-    'location': 'Asir Province',
-    'image': 'assets/images/rijal_almaa.jpg',
-    'description': 'Explore a mountain village of stone buildings, colorful windows, green hills, and cool highland air.',
-    'tag': 'Hidden gem',
-    'rating': '4.8',
-    'bestTime': 'April - September',
-    'duration': 'Half day',
-  },
-];
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -60,6 +19,17 @@ class _HomeScreenState extends State<HomeScreen> {
   // Stores the names of places the user bookmarks.
   final Set<String> saved = {};
   final TextEditingController searchController = TextEditingController();
+  final List<PlaceModel> places = [];
+
+  void getData() {
+    places.addAll(placesData.map(PlaceModel.fromJson));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
 
   @override
   void dispose() {
@@ -70,10 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final displayedPlaces = places.where((place) {
-      final isInSelectedTab =
-          selectedIndex == 0 || saved.contains(place['name']);
-      final searchableText = '${place['name']} ${place['location']}'
-          .toLowerCase();
+      final isInSelectedTab = selectedIndex == 0 || saved.contains(place.name);
+      final searchableText = '${place.name} ${place.location}'.toLowerCase();
       return isInSelectedTab && searchableText.contains(query.toLowerCase());
     }).toList();
     return Scaffold(
@@ -199,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: displayedPlaces.length,
                     itemBuilder: (context, index) {
                       final place = displayedPlaces[index];
-                      final isSaved = saved.contains(place['name']);
+                      final isSaved = saved.contains(place.name);
 
                       return Container(
                         margin: const EdgeInsets.only(bottom: 20),
@@ -219,7 +187,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.asset(
-                              place['image'],
+                              place.image,
                               width: double.infinity,
                               height: MediaQuery.sizeOf(context).width * 0.58,
                               fit: BoxFit.cover,
@@ -243,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                         ),
                                         child: Text(
-                                          place['tag'],
+                                          place.tag,
                                           style: const TextStyle(
                                             fontWeight: FontWeight.w700,
                                             fontSize: 12,
@@ -260,9 +228,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onPressed: () {
                                           setState(() {
                                             if (isSaved) {
-                                              saved.remove(place['name']);
+                                              saved.remove(place.name);
                                             } else {
-                                              saved.add(place['name']);
+                                              saved.add(place.name);
                                             }
                                           });
                                         },
@@ -281,7 +249,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       const SizedBox(width: 4),
                                       Text(
-                                        place['rating'],
+                                        place.rating,
                                         style: const TextStyle(
                                           fontWeight: FontWeight.w800,
                                         ),
@@ -290,14 +258,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   const SizedBox(height: 14),
                                   Text(
-                                    place['name'],
+                                    place.name,
                                     style: Theme.of(context)
                                         .textTheme
                                         .titleLarge,
                                   ),
                                   const SizedBox(height: 6),
                                   Text(
-                                    place['location'],
+                                    place.location,
                                     style: TextStyle(
                                       color: Colors.grey.shade600,
                                     ),
@@ -315,7 +283,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   place: place,
                                                   onSave: () {
                                                     setState(() {
-                                                      saved.add(place['name']);
+                                                      saved.add(place.name);
                                                     });
                                                   },
                                                 ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/place_model.dart';
+
 class PlaceDetailsScreen extends StatelessWidget {
   const PlaceDetailsScreen({
     super.key,
@@ -7,14 +9,14 @@ class PlaceDetailsScreen extends StatelessWidget {
     required this.onSave,
   });
 
-  final Map<String, dynamic> place;
+  final PlaceModel place;
   final VoidCallback onSave;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(place['name']),
+        title: Text(place.name),
         backgroundColor: const Color(0xFF3D2A20),
         foregroundColor: const Color(0xFFFFF9F3),
       ),
@@ -27,7 +29,7 @@ class PlaceDetailsScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(24),
 
             child: Image.asset(
-              place['image'],
+              place.image,
 
               width: double.infinity,
 
@@ -39,10 +41,7 @@ class PlaceDetailsScreen extends StatelessWidget {
 
           const SizedBox(height: 24),
 
-          Text(
-            place['name'],
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+          Text(place.name, style: Theme.of(context).textTheme.headlineMedium),
 
           const SizedBox(height: 8),
 
@@ -52,7 +51,7 @@ class PlaceDetailsScreen extends StatelessWidget {
 
               const SizedBox(width: 6),
 
-              Text(place['location']),
+              Text(place.location),
             ],
           ),
 
@@ -64,7 +63,7 @@ class PlaceDetailsScreen extends StatelessWidget {
           const SizedBox(height: 10),
 
           Text(
-            place['description'],
+            place.description,
             style: TextStyle(
               color: Colors.grey.shade700,
               fontSize: 16,
@@ -102,7 +101,7 @@ class PlaceDetailsScreen extends StatelessWidget {
                       const SizedBox(height: 4),
 
                       Text(
-                        place['bestTime'],
+                        place.bestTime,
                         style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
                     ],
@@ -138,7 +137,7 @@ class PlaceDetailsScreen extends StatelessWidget {
                       const SizedBox(height: 4),
 
                       Text(
-                        place['duration'],
+                        place.duration,
                         style: const TextStyle(fontWeight: FontWeight.w800),
                       ),
                     ],
@@ -157,7 +156,7 @@ class PlaceDetailsScreen extends StatelessWidget {
                 onSave();
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: Text('${place['name']} added to your dream trip!'),
+                    content: Text('${place.name} added to your dream trip!'),
                   ),
                 );
               },
