@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/place_data.dart';
+import '../service/database.dart';
 import '../models/place_model.dart';
 import 'place_details.dart';
 
@@ -19,16 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   // Stores the names of places the user bookmarks.
   final Set<String> saved = {};
   final TextEditingController searchController = TextEditingController();
-  final List<PlaceModel> places = [];
-
-  void getData() {
-    places.addAll(placesData.map(PlaceModel.fromJson));
-  }
+  late final Future<List<PlaceModel>> _places;
 
   @override
   void initState() {
     super.initState();
-    getData();
+    _places = Database().getPlaceScreen();
   }
 
   @override
@@ -39,11 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final displayedPlaces = places.where((place) {
-      final isInSelectedTab = selectedIndex == 0 || saved.contains(place.name);
-      final searchableText = '${place.name} ${place.location}'.toLowerCase();
-      return isInSelectedTab && searchableText.contains(query.toLowerCase());
-    }).toList();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -119,7 +110,21 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Expanded(
-            child: displayedPlaces.isEmpty
+            child: FutureBuilder<List<PlaceModel>>(
+              future: _places,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState != ConnectionState.done) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return const Center(child: Text('Could not load places. Please try again.'));
+                }
+    final displayedPlaces = (snapshot.data ?? <PlaceModel>[]).where((place) {
+      final isInSelectedTab = selectedIndex == 0 || saved.contains(place.name);
+      final searchableText = '${place.name} ${place.location}'.toLowerCase();
+      return isInSelectedTab && searchableText.contains(query.toLowerCase());
+    }).toList();
+                return displayedPlaces.isEmpty
                 ? Center(
                     child: Padding(
                       padding: const EdgeInsets.all(24),
@@ -134,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Icon(
-                              query.isEmpty
+                              query.isEmpty && selectedIndex == 1
                                   ? Icons.bookmark_add_outlined
                                   : Icons.search_off_rounded,
                               size: 48,
@@ -142,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             SizedBox(height: 16),
                             Text(
-                              query.isEmpty
+                              query.isEmpty && selectedIndex == 1
                                   ? 'No saved places yet'
                                   : 'No places found',
                               style: TextStyle(
@@ -152,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             SizedBox(height: 8),
                             Text(
-                              query.isEmpty
+                              query.isEmpty && selectedIndex == 1
                                   ? 'Bookmark a destination from Discover to find it here.'
                                   : 'Try a different destination name or region.',
                               textAlign: TextAlign.center,
@@ -281,9 +286,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                             builder: (context) =>
                                                 PlaceDetailsScreen(
                                                   place: place,
-                                                  onSave: () {
+                                                  onSave: (selectedPlace) {
                                                     setState(() {
-                                                      saved.add(place.name);
+                                                      saved.add(selectedPlace.name);
                                                     });
                                                   },
                                                 ),
@@ -300,7 +305,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       );
                     },
-                  ),
+                  );
+              },
+            ),
           ),
         ],
       ),

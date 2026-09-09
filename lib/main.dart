@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+   WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: "https://xkpewdmvndqcyiisynbg.supabase.co",
+    publishableKey: "sb_publishable_HmDMJWsNEiffQCNl1kKwXg_LHG54vdf",
+  );
   runApp(const RihlaApp());
 }
 

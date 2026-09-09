@@ -10,7 +10,7 @@ class PlaceDetailsScreen extends StatelessWidget {
   });
 
   final PlaceModel place;
-  final VoidCallback onSave;
+  final ValueChanged<PlaceModel> onSave;
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +20,8 @@ class PlaceDetailsScreen extends StatelessWidget {
         backgroundColor: const Color(0xFF3D2A20),
         foregroundColor: const Color(0xFFFFF9F3),
       ),
-
       body: ListView(
         padding: const EdgeInsets.all(20),
-
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(24),
@@ -153,7 +151,7 @@ class PlaceDetailsScreen extends StatelessWidget {
             width: double.infinity,
             child: FilledButton.icon(
               onPressed: () {
-                onSave();
+                onSave(place);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text('${place.name} added to your dream trip!'),

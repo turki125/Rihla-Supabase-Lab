@@ -26,8 +26,8 @@ class PlaceModel {
       image: json['image'] as String,
       description: json['description'] as String,
       tag: json['tag'] as String,
-      rating: json['rating'] as String,
-      bestTime: json['bestTime'] as String,
+      rating: json['rating'].toString(),
+      bestTime: (json['best_time'] ?? json['bestTime']) as String,
       duration: json['duration'] as String,
     );
   }
